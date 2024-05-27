@@ -1,9 +1,9 @@
 <template>
   <v-app-bar>
-    <v-app-bar-title
-      class="font-weight-black text-uppercase pointer"
-      @click="navigateToHome"
-    >
+    <template v-slot:prepend>
+      <v-app-bar-nav-icon></v-app-bar-nav-icon>
+    </template>
+    <v-app-bar-title class="font-weight-black text-uppercase pointer" @click="navigateToHome">
       Happy Tours
     </v-app-bar-title>
     <v-spacer></v-spacer>

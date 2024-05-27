@@ -1,28 +1,12 @@
 <template>
   <v-container>
     <v-form @submit.prevent="bookTour">
-      <v-select
-        v-model="tourType"
-        :items="['Morning', 'Sunset']"
-        label="Select Tour Type"
-        required
-      ></v-select>
-      <v-text-field
-        v-model="date"
-        label="Select Date"
-        type="date"
-        required
-      ></v-text-field>
-      <v-text-field
-        v-model="numTickets"
-        label="Number of Tickets"
-        type="number"
-        required
-        :rules="[
-          (v) =>
-            (v > 0 && v <= maxTickets) || `Max ${maxTickets} tickets available`,
-        ]"
-      ></v-text-field>
+      <v-select v-model="tourType" :items="['Morning', 'Sunset']" label="Select Tour Type" required></v-select>
+      <v-text-field v-model="date" label="Select Date" type="date" required></v-text-field>
+      <v-text-field v-model="numTickets" label="Number of Tickets" type="number" required :rules="[
+        (v) =>
+          (v > 0 && v <= maxTickets) || `Max ${maxTickets} tickets available`,
+      ]"></v-text-field>
       <v-btn type="submit" color="primary">Book Now</v-btn>
     </v-form>
     <v-alert v-if="message" :type="alertType">{{ message }}</v-alert>
