@@ -3,10 +3,10 @@
     <v-row>
       <v-col cols="12">
         <h1>Bookings</h1>
-        <BookingForm />
       </v-col>
     </v-row>
   </v-container>
+  <BookingForm />
 </template>
 
 <script setup lang="ts"></script>
