@@ -6,7 +6,7 @@
       </v-col>
     </v-row>
   </v-container>
-  <BookingForm />
+  <!-- <BookingForm /> -->
 </template>
 
 <script setup lang="ts"></script>

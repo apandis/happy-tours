@@ -1,13 +1,18 @@
 <template>
   <v-app-bar>
-    <template v-slot:prepend>
-      <v-app-bar-nav-icon></v-app-bar-nav-icon>
-    </template>
-    <v-app-bar-title class="font-weight-black text-uppercase pointer" @click="navigateToHome">
+    <v-app-bar-title
+      class="font-weight-black text-uppercase pointer"
+      @click="navigateToHome"
+    >
       Happy Tours
     </v-app-bar-title>
     <v-spacer></v-spacer>
-    <v-btn variant="plain" to="/bookings" class=""> Bookings </v-btn>
+    <v-btn variant="plain" to="/bookings" class="d-none d-sm-flex">
+      Bookings
+    </v-btn>
+    <template v-slot:append>
+      <v-app-bar-nav-icon class="d-flex d-sm-none"></v-app-bar-nav-icon>
+    </template>
   </v-app-bar>
 </template>
 

@@ -6,7 +6,7 @@
       </v-col>
     </v-row>
   </v-container>
-  <AvailabilityDashboard />
+  <!-- <AvailabilityDashboard /> -->
 </template>
 
 <script setup lang="ts"></script>
