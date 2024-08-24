@@ -11,7 +11,7 @@
       variant="elevated"
       target="_blank"
       href="https://wa.me/306981712060"
-      class="d-none d-sm-flex pa-3"
+      class="d-none d-sm-flex pa-3 mr-3"
       color="success"
       rounded
     >
