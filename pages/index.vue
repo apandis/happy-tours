@@ -257,21 +257,21 @@ import { ref } from "vue";
 // Cruise options data
 const cruises = ref([
   {
-    image: "/public/AdobeStock_127097000_Preview.jpeg",
+    image: "AdobeStock_127097000_Preview.jpeg",
     title: "Blue Lagoon & Caves",
     subtitle: "A quick escape to paradise.",
     description:
       "Enjoy a short trip to the beautiful Blue Lagoon. Swim, explore caves, and fish with all gear provided.",
   },
   {
-    image: "./public/AdobeStock_127105545_Preview.jpeg",
+    image: "AdobeStock_127105545_Preview.jpeg",
     title: "Sunset Cruise",
     subtitle: "Experience the magic of sunset at sea.",
     description:
       "Relax on a serene evening cruise with fishing and complimentary drinks while enjoying a stunning sunset.",
   },
   {
-    image: "./public/AdobeStock_306137506_Preview.jpeg",
+    image: "AdobeStock_306137506_Preview.jpeg",
     title: "Paxos & Antipaxos",
     subtitle: "A full day of exploration and adventure.",
     description:
@@ -386,10 +386,6 @@ const scrollToSection = (sectionId) => {
 .v-card-actions.d-flex {
   flex-direction: column;
   align-items: center;
-}
-
-.v-btn {
-  width: 100%;
 }
 
 @media (max-width: 600px) {
