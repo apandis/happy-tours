@@ -4,14 +4,20 @@
     <v-container fluid class="hero-section">
       <v-row align="center" justify="center">
         <v-col class="text-center">
-          <h1 class="display-2 font-weight-bold mb-4">Happy Tours Kavos</h1>
-          <p class="headline mb-6">
+          <h1 class="display-2 font-weight-bold mb-4 text-white text-shadow">
+            Happy Tours Kavos
+          </h1>
+          <p class="headline mb-6 text-white text-shadow">
             Enjoy daily cruises from Kavos to the Blue Lagoon, Paxos, and more,
             all with a fun fishing experience!
           </p>
-          <v-btn color="primary" large @click="scrollToSection('cruiseOptions')"
-            >Explore Our Cruises</v-btn
+          <v-btn
+            color="primary"
+            large
+            @click="scrollToSection('cruiseOptions')"
           >
+            Explore Our Cruises
+          </v-btn>
         </v-col>
       </v-row>
     </v-container>
@@ -358,6 +364,7 @@ const scrollToSection = (sectionId) => {
 
 <style scoped>
 .hero-section {
+  position: relative;
   height: 400px;
   background: url("/public/preview.jpeg") center center no-repeat;
   background-size: cover;
@@ -366,6 +373,17 @@ const scrollToSection = (sectionId) => {
   justify-content: center;
   color: white;
   text-align: center;
+  overflow: hidden;
+}
+/* Ensure text appears above the overlay */
+.text-center {
+  position: relative;
+  z-index: 2;
+}
+
+/* Text shadow for improved readability */
+.text-shadow {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
 .info-section {
