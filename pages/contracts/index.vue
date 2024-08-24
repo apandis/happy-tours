@@ -1,5 +1,5 @@
 <template>
-  <ComingSoonPage />
+  <QuickScan />
 </template>
 
 <script setup lang="ts"></script>

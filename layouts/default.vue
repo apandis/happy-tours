@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <AppNavigation />
+    <!-- <AppNavigation /> -->
     <v-main>
       <slot />
     </v-main>
