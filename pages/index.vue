@@ -43,7 +43,13 @@
           class="d-flex"
         >
           <v-card class="flex-grow-1 mb-6" elevation="2" max-height="400px">
-            <v-img :src="cruise.image" height="180" alt="Cruise image"></v-img>
+            <v-img
+              :src="cruise.image"
+              height="200"
+              aspect-ratio="2.75"
+              cover
+              alt="Cruise image"
+            ></v-img>
             <v-card-title class="headline">{{ cruise.title }}</v-card-title>
             <v-card-subtitle>{{ cruise.subtitle }}</v-card-subtitle>
             <v-card-text>{{ cruise.description }}</v-card-text>
