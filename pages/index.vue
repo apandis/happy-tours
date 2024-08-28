@@ -243,15 +243,22 @@
       <v-row>
         <v-col>
           <p>© 2024 Happy Tours in Kavos, Corfu. All Rights Reserved.</p>
-          <!-- Privacy Policy Link using NuxtLink -->
-          <p>
+          <!-- Navigation Links -->
+          <div class="mt-6">
             <NuxtLink
               to="/privacy-policy"
               class="text-decoration-none text-white"
             >
               Privacy Policy
             </NuxtLink>
-          </p>
+            |
+            <NuxtLink
+              to="/terms-and-conditions"
+              class="text-decoration-none text-white"
+            >
+              Terms & Conditions
+            </NuxtLink>
+          </div>
         </v-col>
       </v-row>
     </v-container>
