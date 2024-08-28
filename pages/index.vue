@@ -366,7 +366,7 @@ const scrollToSection = (sectionId) => {
 <style scoped>
 .hero-section {
   position: relative;
-  height: 400px;
+  height: 100vh;
   background: url("/public/blue-lagoon-cave.jpg") center center no-repeat;
   background-size: cover;
   display: flex;
