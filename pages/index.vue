@@ -266,8 +266,6 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
-
 // Cruise options data
 const cruises = ref([
   {
