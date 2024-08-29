@@ -47,7 +47,7 @@
           <v-card-subtitle>{{ cruise.subtitle }}</v-card-subtitle>
           <v-card-text>{{ cruise.description }}</v-card-text>
           <v-card-actions class="justify-end">
-            <v-btn color="primary" text @click="openDialog(cruise)"
+            <v-btn color="primary" text @click="openCruiseInquiries()"
               >Learn More</v-btn
             >
           </v-card-actions>
@@ -163,86 +163,12 @@
     </v-row>
   </v-container>
 
-  <!-- Improved Booking Dialog -->
-  <v-dialog v-model="dialog" max-width="400">
-    <v-card>
-      <v-card-title class="headline">{{ selectedCruise.title }}</v-card-title>
-      <v-card-text>
-        <v-form ref="form" class="pa-2">
-          <v-text-field
-            v-model="bookingInfo.name"
-            label="Your Name"
-            outlined
-            dense
-            required
-          ></v-text-field>
-          <v-text-field
-            v-model="bookingInfo.phone"
-            label="Your Phone Number"
-            outlined
-            dense
-            required
-          ></v-text-field>
-          <v-text-field
-            v-model="bookingInfo.email"
-            label="Your Email"
-            type="email"
-            outlined
-            dense
-            required
-          ></v-text-field>
-          <v-text-field
-            v-model="bookingInfo.date"
-            label="Preferred Date"
-            type="date"
-            outlined
-            dense
-            required
-          ></v-text-field>
-          <v-text-field
-            v-model="bookingInfo.persons"
-            label="Number of Persons"
-            type="number"
-            min="1"
-            outlined
-            dense
-            required
-          ></v-text-field>
-          <v-textarea
-            v-model="bookingInfo.specialRequests"
-            label="Special Requests/Comments"
-            outlined
-            dense
-            rows="2"
-          ></v-textarea>
-        </v-form>
-      </v-card-text>
-      <v-card-actions class="d-flex flex-column pa-4">
-        <v-btn color="primary" class="mb-2" block @click="sendWhatsApp"
-          >Send via WhatsApp</v-btn
-        >
-        <v-btn color="secondary" block @click="sendEmail">Send via Email</v-btn>
-      </v-card-actions>
-      <v-card-actions>
-        <v-btn
-          text
-          block
-          @click="
-            dialog = false;
-            resetForm();
-          "
-          >Cancel</v-btn
-        >
-      </v-card-actions>
-    </v-card>
-  </v-dialog>
-
   <!-- Footer Section -->
   <v-footer color="grey darken-4" class="text-white text-center py-4">
     <v-container>
       <v-row>
         <v-col>
-          <p>© 2024 Happy Tours in Kavos, Corfu. All Rights Reserved.</p>
+          <p>© 2024 Happy Tours Kavos. All Rights Reserved.</p>
           <!-- Navigation Links -->
           <div class="mt-6">
             <NuxtLink
@@ -266,6 +192,7 @@
 </template>
 
 <script setup>
+const router = useRouter();
 // Cruise options data
 const cruises = ref([
   {
@@ -291,73 +218,8 @@ const cruises = ref([
   },
 ]);
 
-const dialog = ref(false);
-const selectedCruise = ref({});
-const bookingInfo = ref({
-  name: "",
-  phone: "",
-  email: "",
-  date: "",
-  persons: 1,
-  specialRequests: "",
-});
-
-const openDialog = (cruise) => {
-  selectedCruise.value = cruise;
-  dialog.value = true;
-};
-
-const sendWhatsApp = () => {
-  const message = `Hello, I'm interested in booking the ${
-    selectedCruise.value.title
-  } cruise on ${bookingInfo.value.date} for ${
-    bookingInfo.value.persons
-  } persons. My name is ${bookingInfo.value.name}, my contact number is ${
-    bookingInfo.value.phone
-  }, and my email is ${bookingInfo.value.email}. Special requests: ${
-    bookingInfo.value.specialRequests || "None"
-  }`;
-  const phoneNumber = "306981712060"; // Make sure this is in international format
-  const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
-    message
-  )}`;
-  window.open(whatsappUrl, "_blank");
-  dialog.value = false;
-  resetForm();
-};
-
-const sendEmail = () => {
-  const subject = `Booking Inquiry for ${selectedCruise.value.title} Cruise`;
-  const body = `Hello,\n\nI am interested in booking the ${
-    selectedCruise.value.title
-  } cruise on ${bookingInfo.value.date} for ${
-    bookingInfo.value.persons
-  } persons.\n\nMy name is ${bookingInfo.value.name}, my contact number is ${
-    bookingInfo.value.phone
-  }, and my email is ${bookingInfo.value.email}.\n\nSpecial requests: ${
-    bookingInfo.value.specialRequests || "None"
-  }\n\nThank you!`;
-  const emailUrl = `mailto:happytourscfu@gmail.com?subject=${encodeURIComponent(
-    subject
-  )}&body=${encodeURIComponent(body)}`;
-  window.open(emailUrl, "_self");
-  dialog.value = false;
-  resetForm();
-};
-
-const resetForm = () => {
-  bookingInfo.value = {
-    name: "",
-    phone: "",
-    email: "",
-    date: "",
-    persons: 1,
-    specialRequests: "",
-  };
-};
-
-const openLink = (url) => {
-  window.open(url, "_blank");
+const openCruiseInquiries = () => {
+  router.push("/contact");
 };
 
 const scrollToSection = (sectionId) => {

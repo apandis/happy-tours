@@ -3,7 +3,7 @@ export default defineNuxtConfig({
   devtools: { enabled: false },
 
   build: {
-    transpile: ["vuetify"],
+    transpile: ["vuetify", "v-phone-input"],
   },
 
   modules: [
