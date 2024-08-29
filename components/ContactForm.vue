@@ -72,22 +72,54 @@
             :max="8"
             :min="1"
             v-model="groupSize"
-            :rules="[rules.required('Group Size'), rules.groupSize]"
+            :rules="[rules.required('Group Size')]"
             hide-details="auto"
             required
           ></v-number-input>
         </v-col>
         <v-col cols="12">
           <v-textarea
-            v-model="bio"
             label="Special Requests"
+            placeholder="Please use this space to provide your hotel details and any transport needs."
             rows="3"
             auto-grow
-            hide-details
+            v-model="specialRequests"
+            :rules="[rules.required('Special Requests')]"
+            hide-details="auto"
           ></v-textarea>
         </v-col>
         <v-col cols="12">
-          <v-btn @click="submitForm">Submit</v-btn>
+          <v-btn
+            @click="sendWhatsApp"
+            block
+            class="text-none"
+            color="success"
+            prepend-icon="mdi-whatsapp"
+          >
+            Message via WhatsApp
+          </v-btn>
+        </v-col>
+        <v-col cols="12">
+          <v-btn
+            @click=""
+            block
+            class="text-none"
+            color="primary"
+            prepend-icon="mdi-email"
+          >
+            Message via Email
+          </v-btn>
+        </v-col>
+        <v-col cols="12">
+          <v-btn
+            @click="$router.push('/')"
+            block
+            class="text-none"
+            variant="outlined"
+            prepend-icon="mdi-window-close"
+          >
+            Cancel
+          </v-btn>
         </v-col>
       </v-row>
     </v-container>
@@ -95,8 +127,6 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
-
 // Define form references and data
 const form = ref(null);
 const fullName = ref("");
@@ -106,7 +136,7 @@ const preferredCruise = ref("");
 const preferredDate = ref();
 const groupSize = ref();
 const specialRequests = ref("");
-const today = ref(new Date()); // Get today's date
+const today = ref(new Date());
 
 // Validation rules
 const rules = {
@@ -132,14 +162,26 @@ const rules = {
   },
 };
 
-const submitForm = async () => {
+// Send WhatsApp message
+const sendWhatsApp = async () => {
   if (form.value) {
     // Validate the form using the validate() method
     const validationResult = await form.value.validate();
-
-    // Check if the form is valid
     if (validationResult.valid) {
       console.log("Form submitted!");
+      const message = `Hello, I'm interested in booking the ${
+        preferredCruise.value
+      } on ${preferredDate.value} for ${groupSize.value} persons. My name is ${
+        fullName.value
+      }, my contact number is ${phoneNumber.value}, and my email is ${
+        emailAddress.value
+      }. Special requests: ${specialRequests.value || "None"}`;
+      const whatsappNumber = "+306977644053";
+      const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+        message
+      )}`;
+      window.open(whatsappUrl, "_blank");
+      resetForm();
     } else {
       console.log("Validation failed.");
       // Handle the error messages
@@ -150,6 +192,17 @@ const submitForm = async () => {
       });
     }
   }
+};
+
+const resetForm = () => {
+  fullName.value = "";
+  emailAddress.value = "";
+  phoneNumber.value = "";
+  preferredCruise.value = "";
+  preferredDate.value = null;
+  groupSize.value = null;
+  specialRequests.value = "";
+  form.value.reset();
 };
 </script>
 
