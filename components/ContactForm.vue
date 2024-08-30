@@ -134,6 +134,7 @@
 </template>
 
 <script setup>
+const router = useRouter();
 // Define form references and data
 const form = ref(null);
 const fullName = ref("");
@@ -258,6 +259,7 @@ const sendWhatsApp = async () => {
 
   window.open(whatsappUrl, "_blank");
   resetForm();
+  router.push("/");
 };
 
 // Function to send Email
@@ -278,6 +280,7 @@ const sendEmail = async () => {
 
   window.open(emailUrl, "_self");
   resetForm();
+  router.push("/");
 };
 
 // Function to reset the form fields
