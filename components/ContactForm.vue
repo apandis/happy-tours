@@ -39,7 +39,7 @@
             type="tel"
             v-model="phoneNumber"
             defaultCountry="gr"
-            :preferCountries="['de', 'fr', 'gb', 'us', 'it', 'es']"
+            :preferCountries="['gr', 'de', 'fr', 'gb', 'us', 'it', 'es']"
             :rules="[rules.required('Phone number')]"
             hide-details="auto"
             required
@@ -134,6 +134,7 @@
 </template>
 
 <script setup>
+import { useSnackbarStore } from "@/stores/snackbar";
 const router = useRouter();
 // Define form references and data
 const form = ref(null);
@@ -146,6 +147,8 @@ const groupSize = ref();
 const cruiseType = ref(null);
 const specialRequests = ref("");
 const currentDate = ref(new Date());
+
+const snackbarStore = useSnackbarStore(); // Access the store
 
 // Computed property to handle the preferred date formatting
 const formattedPreferredDate = computed({
@@ -171,13 +174,6 @@ const rules = {
   emailAddress: (v) => {
     const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return !v || pattern.test(v) || "Invalid email address.";
-  },
-  phoneNumber: (v) => {
-    const pattern = /^\+?[0-9]{1,3}[\s.-]?[0-9]{1,3}[\s.-]?[0-9]{1,4}$/;
-    return !v || pattern.test(v) || "Invalid phone number.";
-  },
-  groupSize: (v) => {
-    return !v || v >= 1 || "Passenger number must be at least 1.";
   },
 };
 
@@ -258,8 +254,14 @@ const sendWhatsApp = async () => {
   )}`;
 
   window.open(whatsappUrl, "_blank");
+
+  // Show success snackbar using store
+  snackbarStore.showSnackbar("Message sent successfully via WhatsApp!");
+
   resetForm();
-  router.push("/");
+  setTimeout(() => {
+    router.push("/");
+  }, 3000); // Redirect after 3 seconds
 };
 
 // Function to send Email
@@ -279,8 +281,14 @@ const sendEmail = async () => {
   )}&body=${encodeURIComponent(body)}`;
 
   window.open(emailUrl, "_self");
+
+  // Show success snackbar using store
+  snackbarStore.showSnackbar("Message sent successfully via Email!");
+
   resetForm();
-  router.push("/");
+  setTimeout(() => {
+    router.push("/");
+  }, 3000); // Redirect after 3 seconds
 };
 
 // Function to reset the form fields
