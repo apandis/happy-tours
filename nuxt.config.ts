@@ -1,6 +1,16 @@
 import vuetify, { transformAssetUrls } from "vite-plugin-vuetify";
+
 export default defineNuxtConfig({
   devtools: { enabled: false },
+  site: {
+    url: "https://happy-tours.gr",
+    name: "Happy Tours Kavos",
+  },
+  sitemap: {
+    // excludeAppSources: true,
+    exclude: ["/tours/**", "/contact"],
+    // sources: ["/api/sitemap"],
+  },
 
   build: {
     transpile: ["vuetify", "v-phone-input"],
@@ -14,6 +24,8 @@ export default defineNuxtConfig({
       });
     },
     "@pinia/nuxt",
+    "@nuxtjs/sitemap",
+    "@nuxtjs/robots",
   ],
 
   vite: {
