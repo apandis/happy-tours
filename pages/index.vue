@@ -142,6 +142,7 @@
             href="https://www.instagram.com/happytourskavos/"
             target="_blank"
             class="text-decoration-none text-primary"
+            @click="triggerEvent('instagram_link')"
             >Instagram</a
           >
           |
@@ -149,6 +150,7 @@
             href="https://www.facebook.com/groups/610540991023965/"
             target="_blank"
             class="text-decoration-none text-primary"
+            @click="triggerEvent('facebook_link')"
             >Facebook</a
           >
           |
@@ -156,6 +158,7 @@
             href="https://maps.app.goo.gl/RkGxxXjnHXqrqBJU6"
             target="_blank"
             class="text-decoration-none text-primary"
+            @click="triggerEvent('google_maps_link')"
             >Google Maps</a
           >
         </p>
@@ -193,6 +196,7 @@
 
 <script setup>
 const router = useRouter();
+const gtm = useGtm();
 // Cruise options data
 const cruises = ref([
   {
@@ -219,6 +223,7 @@ const cruises = ref([
 ]);
 
 const openCruiseInquiries = () => {
+  triggerEvent("cruise_inquiries");
   router.push("/contact");
 };
 
@@ -227,6 +232,11 @@ const scrollToSection = (sectionId) => {
   if (section) {
     section.scrollIntoView({ behavior: "smooth" });
   }
+  triggerEvent("explore_cruises");
+};
+
+const triggerEvent = (eventName) => {
+  gtm.push({ event: eventName });
 };
 </script>
 

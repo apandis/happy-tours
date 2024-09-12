@@ -26,6 +26,7 @@ export default defineNuxtConfig({
     "@pinia/nuxt",
     "@nuxtjs/sitemap",
     "@nuxtjs/robots",
+    "@zadigetvoltaire/nuxt-gtm",
   ],
 
   vite: {
@@ -39,7 +40,26 @@ export default defineNuxtConfig({
   compatibilityDate: "2024-08-27",
 
   runtimeConfig: {
-    // Server-side only keys
+    public: {
+      gtm: {
+        id: "GTM-TB98SDXR",
+        queryParams: {
+          gtm_auth: "GfbNoyS5riJC1XR5M91ctw",
+          gtm_preview: "env-4",
+          gtm_cookies_win: "x",
+        },
+        defer: false,
+        compatibility: false,
+        nonce: "2726c7f26c",
+        enabled: true,
+        debug: true,
+        loadScript: true,
+        enableRouterSync: true,
+        ignoredViews: ["homepage"],
+        trackOnNextTick: false,
+        devtools: true,
+      },
+    },
     private: {
       googleServiceAccountKey: process.env.GOOGLE_SERVICE_ACCOUNT_KEY,
     },
