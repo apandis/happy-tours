@@ -5,6 +5,7 @@
 </template>
 
 <script setup lang="ts">
+const messagesStore = useMessagesStore();
 useHead({
   title: "Happy Tours - Fishing Adventures and Sunset Cruises in Corfu",
   meta: [
@@ -66,6 +67,9 @@ useHead({
   link: [
     { rel: "canonical", href: "https://www.happy-tours.gr" }, // Canonical URL for the homepage
   ],
+});
+onMounted(() => {
+  messagesStore.fetchMessages();
 });
 </script>
 

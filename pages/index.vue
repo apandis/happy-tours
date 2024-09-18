@@ -187,6 +187,7 @@
             >
               Terms & Conditions
             </NuxtLink>
+            | {{ messagesCount }} Messages
           </div>
         </v-col>
       </v-row>
@@ -197,6 +198,10 @@
 <script setup>
 const router = useRouter();
 const gtm = useGtm();
+
+const messagesStore = useMessagesStore();
+const messagesCount = messagesStore.messageCount;
+
 // Cruise options data
 const cruises = ref([
   {
