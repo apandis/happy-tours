@@ -11,7 +11,6 @@ export const useMessagesStore = defineStore("messages", {
       this.loading = true;
       this.error = null;
       try {
-        // Assuming your API is at /api/messages
         const response = await $fetch("/api/messages");
         this.messages = response.data;
       } catch (error: any) {
