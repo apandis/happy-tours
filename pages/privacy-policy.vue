@@ -133,6 +133,20 @@ const router = useRouter();
 const goBack = () => {
   router.push("/"); // Replace '/' with the correct route for your homepage if different
 };
+useHead({
+  title: "Privacy Policy",
+  meta: [
+    {
+      name: "description",
+      content:
+        "Read the privacy policy of Happy Tours to understand how we handle your data.",
+    },
+    // ... [Open Graph and Twitter meta tags]
+  ],
+  link: [
+    { rel: "canonical", href: "https://www.happy-tours.gr/privacy-policy" },
+  ],
+});
 </script>
 
 <style scoped>

@@ -116,6 +116,24 @@ const router = useRouter();
 const goBack = () => {
   router.push("/"); // Replace '/' with the correct route for your homepage if different
 };
+
+useHead({
+  title: "Terms and Conditions",
+  meta: [
+    {
+      name: "description",
+      content:
+        "Review the terms and conditions for using Happy Tours services.",
+    },
+    // ... [Open Graph and Twitter meta tags]
+  ],
+  link: [
+    {
+      rel: "canonical",
+      href: "https://www.happy-tours.gr/terms-and-conditions",
+    },
+  ],
+});
 </script>
 
 <style scoped>

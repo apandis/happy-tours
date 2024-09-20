@@ -2,6 +2,7 @@ import vuetify, { transformAssetUrls } from "vite-plugin-vuetify";
 
 export default defineNuxtConfig({
   devtools: { enabled: false },
+  ssr: true,
   site: {
     url: "https://happy-tours.gr",
     name: "Happy Tours Kavos",

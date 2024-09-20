@@ -1,3 +1,4 @@
+<!-- pages/index.vue -->
 <template>
   <!-- Hero Section -->
   <v-container fluid class="hero-section">
@@ -41,7 +42,7 @@
             height="200"
             aspect-ratio="2.75"
             cover
-            alt="Cruise image"
+            :alt="cruise.title"
           ></v-img>
           <v-card-title class="headline">{{ cruise.title }}</v-card-title>
           <v-card-subtitle>{{ cruise.subtitle }}</v-card-subtitle>
@@ -195,15 +196,20 @@
   </v-footer>
 </template>
 
-<script setup>
-const router = useRouter();
-const gtm = useGtm();
-
+<script setup lang="ts">
+// Messages Store
 const messagesStore = useMessagesStore();
-const messagesCount = messagesStore.messageCount;
+
+// Fetch messages on component mount
+onMounted(() => {
+  messagesStore.fetchMessages();
+});
+
+// Reactive variable for messages count
+const messagesCount = computed(() => messagesStore.messageCount);
 
 // Cruise options data
-const cruises = ref([
+const cruises = [
   {
     image: "blue-lagoon-beach.jpg",
     title: "Blue Lagoon Sivota",
@@ -225,14 +231,15 @@ const cruises = ref([
     description:
       "Discover hidden gems, swim in crystal clear waters, and enjoy fishing with fresh fish prepared on board.",
   },
-]);
+];
 
+// Navigation functions
 const openCruiseInquiries = () => {
   triggerEvent("cruise_inquiries");
-  router.push("/contact");
+  navigateTo("/contact");
 };
 
-const scrollToSection = (sectionId) => {
+const scrollToSection = (sectionId: string) => {
   const section = document.getElementById(sectionId);
   if (section) {
     section.scrollIntoView({ behavior: "smooth" });
@@ -240,9 +247,80 @@ const scrollToSection = (sectionId) => {
   triggerEvent("explore_cruises");
 };
 
-const triggerEvent = (eventName) => {
-  gtm.push({ event: eventName });
+const openLink = (url: string) => {
+  window.open(url, "_blank");
 };
+
+// Google Tag Manager Event Tracking
+const triggerEvent = (eventName: string) => {
+  // Assuming you're using @nuxtjs/gtm module
+  // push event to GTM data layer
+  if (typeof window !== "undefined" && window.dataLayer) {
+    window.dataLayer.push({ event: eventName });
+  }
+};
+
+// SEO Meta Tags using useHead
+useHead({
+  title: "Fishing Adventures and Sunset Cruises in Corfu",
+  meta: [
+    {
+      name: "description",
+      content:
+        "Happy Tours offers unique fishing experiences around Corfu, with trips to Paxos, Antipaxos, Blue Lagoon in Sivota, and sunset cruises starting from Kavos.",
+    },
+    {
+      name: "keywords",
+      content:
+        "fishing experiences, Corfu fishing tours, Kavos fishing trips, Paxos boat tours, Antipaxos caves, Blue Lagoon Sivota, sunset cruises Corfu, fishing adventures, private fishing charters",
+    },
+    {
+      name: "author",
+      content: "Happy Tours Kavos",
+    },
+    // Open Graph (OG) Meta Tags for Social Sharing
+    {
+      property: "og:title",
+      content: "Happy Tours - Fishing Adventures and Sunset Cruises in Corfu",
+    },
+    {
+      property: "og:description",
+      content:
+        "Discover the best fishing adventures and sunset cruises around Corfu with Happy Tours. Explore Paxos, Antipaxos, and the Blue Lagoon in Sivota.",
+    },
+    {
+      property: "og:image",
+      content: "https://www.happy-tours.gr/images/blue-lagoon-cave.jpg", // Replace with your actual image URL
+    },
+    {
+      property: "og:url",
+      content: "https://www.happy-tours.gr/",
+    },
+    {
+      property: "og:type",
+      content: "website",
+    },
+    // Twitter Meta Tags
+    {
+      name: "twitter:title",
+      content: "Happy Tours - Fishing Adventures and Sunset Cruises in Corfu",
+    },
+    {
+      name: "twitter:description",
+      content:
+        "Join Happy Tours for unforgettable fishing trips and sunset cruises around Corfu, visiting Paxos, Antipaxos, and the Blue Lagoon in Sivota.",
+    },
+    {
+      name: "twitter:image",
+      content: "https://www.happy-tours.gr/images/blue-lagoon-cave.jpg", // Same as OG image
+    },
+    {
+      name: "twitter:card",
+      content: "summary_large_image",
+    },
+  ],
+  link: [{ rel: "canonical", href: "https://www.happy-tours.gr/" }],
+});
 </script>
 
 <style scoped>
@@ -258,6 +336,7 @@ const triggerEvent = (eventName) => {
   text-align: center;
   overflow: hidden;
 }
+
 /* Ensure text appears above the overlay */
 .text-center {
   position: relative;
