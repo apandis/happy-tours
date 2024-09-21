@@ -51,4 +51,7 @@ export default defineNuxtConfig({
     id: "GTM-TB98SDXR",
     enabled: true,
   },
+  experimental: {
+    watcher: "chokidar",
+  },
 });
