@@ -290,7 +290,7 @@ useHead({
     },
     {
       property: "og:image",
-      content: "https://www.happy-tours.gr/images/blue-lagoon-cave.jpg", // Replace with your actual image URL
+      content: "https://www.happy-tours.gr/paxos-voutoumi-beach.jpeg", // Replace with your actual image URL
     },
     {
       property: "og:url",
@@ -312,7 +312,7 @@ useHead({
     },
     {
       name: "twitter:image",
-      content: "https://www.happy-tours.gr/images/blue-lagoon-cave.jpg", // Same as OG image
+      content: "https://www.happy-tours.gr/paxos-voutoumi-beach.jpeg", // Same as OG image
     },
     {
       name: "twitter:card",

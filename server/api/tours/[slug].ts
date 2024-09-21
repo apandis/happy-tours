@@ -1,6 +1,3 @@
-// server/api/tours/[slug].ts
-import { defineEventHandler } from "h3";
-
 export default defineEventHandler((event) => {
   const { slug } = event.context.params;
 
@@ -14,7 +11,7 @@ export default defineEventHandler((event) => {
         "Enjoy a short trip to the beautiful Blue Lagoon. Swim, explore caves, and fish with all gear provided.",
       description:
         "Experience the beauty of the Blue Lagoon in Sivota with our exclusive tour...",
-      imageUrl: "https://www.happy-tours.gr/images/blue-lagoon-beach.jpg",
+      imageUrl: "https://www.happy-tours.gr/blue-lagoon-beach.jpg",
       // Additional tour data
     },
     // ... [Other tours]
