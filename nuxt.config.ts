@@ -8,6 +8,7 @@ export default defineNuxtConfig({
     name: "Happy Tours Kavos",
   },
   sitemap: {
+    hostname: "https://happy-tours.gr",
     // excludeAppSources: true,
     exclude: ["/tours/**", "/contact"],
     // sources: ["/api/sitemap"],
@@ -50,8 +51,5 @@ export default defineNuxtConfig({
   gtm: {
     id: "GTM-TB98SDXR",
     enabled: true,
-  },
-  experimental: {
-    watcher: "chokidar",
   },
 });

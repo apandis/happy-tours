@@ -166,34 +166,6 @@
       </v-col>
     </v-row>
   </v-container>
-
-  <!-- Footer Section -->
-  <v-footer color="grey darken-4" class="text-white text-center py-4">
-    <v-container>
-      <v-row>
-        <v-col>
-          <p>© 2024 Happy Tours Kavos. All Rights Reserved.</p>
-          <!-- Navigation Links -->
-          <div class="mt-6">
-            <NuxtLink
-              to="/privacy-policy"
-              class="text-decoration-none text-white"
-            >
-              Privacy Policy
-            </NuxtLink>
-            |
-            <NuxtLink
-              to="/terms-and-conditions"
-              class="text-decoration-none text-white"
-            >
-              Terms & Conditions
-            </NuxtLink>
-            | {{ messagesCount }} Messages
-          </div>
-        </v-col>
-      </v-row>
-    </v-container>
-  </v-footer>
 </template>
 
 <script setup lang="ts">

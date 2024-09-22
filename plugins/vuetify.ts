@@ -7,6 +7,7 @@ import * as labsComponents from "vuetify/labs/components";
 
 export default defineNuxtPlugin((app) => {
   const vuetify = createVuetify({
+    ssr: true,
     components: {
       ...components,
       ...labsComponents,
