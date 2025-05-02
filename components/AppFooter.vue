@@ -1,56 +1,6 @@
 <template>
   <footer class="footer">
     <v-container class="py-4">
-      <v-row align="center" justify="space-between">
-        <!-- Logo and Company Name -->
-        <v-col cols="12" md="4" class="text-center text-md-left mb-4 mb-md-0">
-          <NuxtLink
-            to="/"
-            class="d-inline-flex align-center text-decoration-none"
-          >
-            <v-img
-              src="/favicon.ico"
-              alt="Company Logo"
-              max-height="50"
-              contain
-              class="mr-2"
-            ></v-img>
-            <span class="font-weight-bold">{{ companyName }}</span>
-          </NuxtLink>
-        </v-col>
-
-        <!-- Navigation Links -->
-        <v-col cols="12" md="4" class="text-center mb-4 mb-md-0">
-          <v-btn
-            v-for="(item, index) in navLinks"
-            :key="index"
-            :to="item.to"
-            text
-            class="mx-2"
-            variant="plain"
-            size="x-small"
-          >
-            {{ item.text }}
-          </v-btn>
-        </v-col>
-
-        <!-- Social Media Icons -->
-        <v-col cols="12" md="4" class="text-center text-md-right">
-          <v-btn
-            v-for="(social, index) in socialLinks"
-            :key="index"
-            icon
-            :href="social.url"
-            target="_blank"
-            class="mx-2"
-            variant="plain"
-            size="x-small"
-          >
-            <v-icon>{{ social.icon }}</v-icon>
-          </v-btn>
-        </v-col>
-      </v-row>
-
       <!-- Legal Links and Copyright -->
       <v-row>
         <v-col cols="12" class="text-center mt-4">

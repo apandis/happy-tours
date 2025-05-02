@@ -1,5 +1,5 @@
 export default defineEventHandler((event) => {
-  const { slug } = event.context.params;
+  const { slug } = event.context.params as { slug: string };
 
   // Dummy data - replace with actual data fetching logic
   const tours = [
